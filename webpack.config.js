@@ -14,6 +14,14 @@ if (process.env.NODE_ENV === 'production') {    // NODE_ENV будет зави�
     isProd = true;
 }
 
+const pageNames = ['index','cards'];
+const HWPArray = pageNames.map(name => {
+    return new HtmlWebpackPlugin({
+        template: `${pathSrc}/${name}.pug`,   // файлы на входе
+        filename: `${name}.html` // html'ки на выходе
+    })
+})
+
 module.exports = {
     mode: mode, // режим текущей сборки
     devtool: devtool,    // карта исходников (только для dev, для prod будет false)
@@ -35,12 +43,8 @@ module.exports = {
     plugins: [ // подключаем плагины
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
-        }),
-        new HtmlWebpackPlugin({
-            template: `${pathSrc}/index.pug`,   // файл на входе
-            filename: `index.html` // html'ки на выходе
         })
-    ],
+    ].concat(HWPArray),
     module: {
         rules: [ // цепочка лоадеров (каждый представляет собой объект с параметрами),
             {
