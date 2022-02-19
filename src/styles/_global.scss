@@ -1,0 +1,17 @@
+$primaryColor: darkblue;
+$secondaryColor: darkviolet;
+
+html {
+  font-family: generalFont, sans-serif
+}
+h1 {
+  color: $primaryColor;
+}
+.container {
+  &__subtitle {
+    color: $secondaryColor;
+    display:block;
+    height:150px;
+    background: url("../images/webpack.jpg");
+  }
+}
