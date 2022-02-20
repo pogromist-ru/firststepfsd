@@ -1,4 +1,26 @@
+$fontsPath: "~/src/assets/fonts";
+
 @font-face {
-  font-family: generalFont;
-  src: url("../fonts/Prompt-Regular.ttf") format("truetype");
+  font-family: 'Montserrat';
+  font-weight: 400;
+  font-style: normal;
+  src: url('#{$fontsPath}/MontserratRegular.eot');
+  src: url('#{$fontsPath}/MontserratRegular.eot') format('embedded-opentype'),
+  url('#{$fontsPath}/MontserratRegular.woff2') format('woff2'),
+  url('#{$fontsPath}/MontserratRegular.woff') format('woff'),
+  url('#{$fontsPath}/MontserratRegular.ttf') format('truetype'),
+  url('#{$fontsPath}/MontserratRegular.svg#MontserratRegular') format('svg');
 }
+@font-face {
+  font-family: 'Montserrat';
+  font-weight: 700;
+  font-style: normal;
+  src: url('#{$fontsPath}/MontserratBold.eot');
+  src: url('#{$fontsPath}/MontserratBold.eot') format('embedded-opentype'),
+  url('#{$fontsPath}/MontserratBold.woff2') format('woff2'),
+  url('#{$fontsPath}/MontserratBold.woff') format('woff'),
+  url('#{$fontsPath}/MontserratBold.ttf') format('truetype'),
+  url('#{$fontsPath}/MontserratBold.svg#MontserratBold') format('svg');
+}
+
+

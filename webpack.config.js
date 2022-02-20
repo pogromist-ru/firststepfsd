@@ -5,6 +5,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // плагин
 // Пути     - path.resolve вычисляет путь из сегментов (справа налево, до получения абсолютного)
 const pathSrc = path.resolve(__dirname, 'src');
 const pathDist = path.resolve(__dirname, 'dist');
+const pathPages = path.resolve(__dirname, 'src/pages');
 
 let mode = 'development';
 let devtool = 'source-map'; // генерировать карту исходников будет только в dev-режиме, в prod переводим в false
@@ -15,7 +16,7 @@ if (process.env.NODE_ENV === 'production') {    // NODE_ENV будет зави�
     isProd = true;
 }
 
-const pages = fs.readdirSync(pathSrc);  // возвращается массив строк с путями к файлам/директориям вида ['index.pug',about.pug','components','fonts','images']
+const pages = fs.readdirSync(pathPages);  // возвращается массив строк с путями к файлам/директориям вида ['index.pug',about.pug']
 const extPages = '.pug'; // задаём расширение файлов, которые будем отдавать на обработку (т.е. переносить в html)
 const pageNames = [];   // сюда будем складывать имена страниц для обработки (но без расширения), в результате чего получим массив вида ['index', 'about']
 pages.forEach(page => {
@@ -25,7 +26,7 @@ pages.forEach(page => {
 })
 const HWPArray = pageNames.map(name => {
     return new HtmlWebpackPlugin({
-        template: `${pathSrc}/${name}${extPages}`,   // файлы на входе
+        template: `${pathPages}/${name}${extPages}`,   // файлы на входе
         filename: `${name}.html` // html'ки на выходе
     })
 })
@@ -33,6 +34,11 @@ const HWPArray = pageNames.map(name => {
 module.exports = {
     mode: mode, // режим текущей сборки
     devtool: devtool,    // карта исходников (только для dev, для prod будет false)
+    performance: {  // https://stackoverflow.com/questions/49348365/webpack-4-size-exceeds-the-recommended-limit-244-kib
+        hints: false,   // отключаем ошибки при превышении порога - https://webpack.js.org/configuration/performance/#performancehints
+        maxEntrypointSize: 512000,  // макс. размеры для точек входа (файлы из Entry Points)
+        maxAssetSize: 512000    // макс. размеры для картинок/шрифтов
+    },
     optimization: {
         splitChunks: {  // выносим либы и иной повторяющийся код в отдельные файлы
             chunks: "all"
@@ -93,7 +99,7 @@ module.exports = {
             {
                 test: /\.pug$/i, // проверяем в папке src все файлы с расширениями pug, при нахождении отдаются на обработку лоудерам
                 loader: 'pug-loader',   // этому лоудеру передаем файлы на обработку
-                exclude: /(node_modules|bower_components)/,  // файлы в этих путях игнорируем
+                exclude: /(node_modules|bower_components)/  // файлы в этих путях игнорируем
             },
             {
                 test: /\.m?js$/i, // проверяем в папке src все файлы с расширениями js-скриптов, при нахождении отдаются на обработку лоудерам
@@ -116,4 +122,8 @@ module.exports = {
             watch: true
         }
     },
+    stats: {    // https://webpack.js.org/configuration/stats/#statschildren    - (добавляем информацию по включениям, исп-м при проблемах с путями)
+        children: true  // Use 'stats.children: true' resp. '--stats-children' for more details
+    }
+
 }

@@ -1,17 +1,5 @@
-$primaryColor: darkblue;
-$secondaryColor: darkviolet;
+$imgPath: "~/src/assets/img";
 
 html {
-  font-family: generalFont, sans-serif
-}
-h1 {
-  color: $primaryColor;
-}
-.container {
-  &__subtitle {
-    color: $secondaryColor;
-    display:block;
-    height:150px;
-    background: url("../images/webpack.jpg");
-  }
+  font-family: Montserrat, sans-serif;
 }
