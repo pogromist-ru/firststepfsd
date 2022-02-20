@@ -1,12 +1,15 @@
-include ../pug_libs/_libs
+include ../components/_mixins
 
 
 doctype html
 html(lang='ru')
-    include ../pug_libs/_head
+    head
+        meta(charset='utf-8')
+        title firststepfsd
 
     body
         .container
             h1 Заголовок пам-парам
             p обычная строка в параграфе
-            +image('webpack.png')
+            div(style="max-width:200px")
+                +image('webpack.png')
