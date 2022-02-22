@@ -1,8 +1,10 @@
+// Подключаем модули/плагины
 const path = require('path');   // Модуль path применяется, чтобы упростить определение путей к файлам в различных операционных системах.
 const fs = require('fs');   // подключаем модуль fs для работы с файловой системой - понадобится для сканирования директории методом readdirSync()
 const HtmlWebpackPlugin = require("html-webpack-plugin");   // подкл. плагин HtmlWebpackPlugin для герерации html-файлов (создание, подкл. скриптов/стилей)
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin')    // генератор фавиконок - https://www.npmjs.com/package/favicons-webpack-plugin
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // плагин извлекает CSS в отдельные файлы, создает CSS-файл для каждого JS-файла, содержашего CSS
+
 // Пути     - path.resolve вычисляет путь из сегментов (справа налево, до получения абсолютного)
 const pathSrc = path.resolve(__dirname, 'src');
 const pathDist = path.resolve(__dirname, 'dist');
@@ -37,7 +39,7 @@ module.exports = {
     mode: mode, // режим текущей сборки
     devtool: devtool,    // карта исходников (только для dev, для prod будет false)
     performance: {  // https://stackoverflow.com/questions/49348365/webpack-4-size-exceeds-the-recommended-limit-244-kib
-        hints: false,   // отключаем ошибки при превышении порога - https://webpack.js.org/configuration/performance/#performancehints
+        hints: 'warning',   // 'warning' выводит предупреждение при превышении порога, но не прерывает сборку - https://webpack.js.org/configuration/performance/#performancehints
         maxEntrypointSize: 512000,  // макс. размеры для точек входа (файлы из Entry Points)
         maxAssetSize: 512000    // макс. размеры для картинок/шрифтов
     },

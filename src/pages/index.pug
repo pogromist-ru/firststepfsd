@@ -1,6 +1,11 @@
 extends ../layouts/ui-kit_layout
 
+block head
+    - var pageTitle = 'Тайтл страницы';
+    - var pageDescription = 'Вот такое вот описание страницы.';
+    - var pageKeywords = 'ключ1, ключ2, ключ3';
+
 block content
     p
         | Эта строка будет выведена в том месте,
-        | где в шаблоне указан block content
+        | где в макете указан block content
