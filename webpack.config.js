@@ -1,6 +1,7 @@
 const path = require('path');   // Модуль path применяется, чтобы упростить определение путей к файлам в различных операционных системах.
 const fs = require('fs');   // подключаем модуль fs для работы с файловой системой - понадобится для сканирования директории методом readdirSync()
 const HtmlWebpackPlugin = require("html-webpack-plugin");   // подкл. плагин HtmlWebpackPlugin для герерации html-файлов (создание, подкл. скриптов/стилей)
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin')    // генератор фавиконок - https://www.npmjs.com/package/favicons-webpack-plugin
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // плагин извлекает CSS в отдельные файлы, создает CSS-файл для каждого JS-файла, содержашего CSS
 // Пути     - path.resolve вычисляет путь из сегментов (справа налево, до получения абсолютного)
 const pathSrc = path.resolve(__dirname, 'src');
@@ -26,6 +27,7 @@ pages.forEach(page => {
 })
 const HWPArray = pageNames.map(name => {
     return new HtmlWebpackPlugin({
+        //favicon: `${pathSrc}/assets/favicons/favicon.ico`, // путь к favicon - заменил на favicons-webpack-plugin
         template: `${pathPages}/${name}${extPages}`,   // файлы на входе
         filename: `${name}.html` // html'ки на выходе
     })
@@ -55,6 +57,7 @@ module.exports = {
         clean: true     // очищаем папку dist перед каждой сборкой
     },
     plugins: [ // подключаем плагины
+        new FaviconsWebpackPlugin(`${pathSrc}/assets/favicons/favicon.svg`),
         new MiniCssExtractPlugin({
             filename: '[name].[contenthash].css'
         })

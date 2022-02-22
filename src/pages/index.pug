@@ -1,15 +1,6 @@
-include ../components/_mixins
+extends ../layouts/ui-kit_layout
 
-
-doctype html
-html(lang='ru')
-    head
-        meta(charset='utf-8')
-        title firststepfsd
-
-    body
-        .container
-            h1 Заголовок пам-парам
-            p обычная строка в параграфе
-            div(style="max-width:200px")
-                +image('webpack.png')
+block content
+    p
+        | Эта строка будет выведена в том месте,
+        | где в шаблоне указан block content
