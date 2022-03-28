@@ -1,0 +1,17 @@
+extends ../layouts/ui-kit_layout
+
+block variables
+    - var pageTitle = 'Тайтл страницы';
+    - var pageDescription = 'Вот такое вот описание страницы.';
+    - var pageKeywords = 'ключ1, ключ2, ключ3';
+
+block content
+    // тут будет контент текущей страницы
+    -
+        var pages = [
+                        ['index.pug','Список страниц']
+                 ]
+    h1 Выберите страницу:
+    ul
+        each item in pages
+            li= item[0]

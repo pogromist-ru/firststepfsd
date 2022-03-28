@@ -1,0 +1,6 @@
+mixin header(type='compact')
+    if type == "compact"
+        header.header
+            a.header__logo(href="/", target="_blank" style="width:100px;display:block;")
+                img.header__logoimg(src=require(`/src/assets/img/logo_uikit.svg`) alt="Logotype")
+    if type == "full"

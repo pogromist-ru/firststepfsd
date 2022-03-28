@@ -39,7 +39,7 @@ module.exports = {
     mode: mode, // режим текущей сборки
     devtool: devtool,    // карта исходников (только для dev, для prod будет false)
     performance: {  // https://stackoverflow.com/questions/49348365/webpack-4-size-exceeds-the-recommended-limit-244-kib
-        hints: 'warning',   // 'warning' выводит предупреждение при превышении порога, но не прерывает сборку - https://webpack.js.org/configuration/performance/#performancehints
+        hints: false,   // 'warning' выводит предупреждение при превышении порога, но не прерывает сборку - https://webpack.js.org/configuration/performance/#performancehints (есть ещё 'error' и false)
         maxEntrypointSize: 512000,  // макс. размеры для точек входа (файлы из Entry Points)
         maxAssetSize: 512000    // макс. размеры для картинок/шрифтов
     },

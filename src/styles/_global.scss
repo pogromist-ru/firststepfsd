@@ -1,9 +1,71 @@
 $imgPath: "~/src/assets/img";
 
-html {
-  font-family: Montserrat, sans-serif;
+
+.websitepage, .uikitpage {
+  padding:0;
+  margin:0;
+  font-family: Montserrat, Arial, sans-serif;
+  color:#444;
 }
-img {
-  display:block;
-  width:100%;
+
+.uikitpage {
+  .header {
+    max-width: 1380px;
+    padding: 30px;
+    margin: 0 auto;
+  }
+
+  .pagelist {
+
+  }
+
+  .pagelist__main-header {
+    color: #cd4b4b;
+    text-align: center;
+  }
+
+  .pagelist {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .pagelist__listblock {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .pagelist__listcont {
+    width: 50%;
+  }
 }
+@media (max-width: 770px) {
+  .uikitpage {
+    .pagelist__listblock {
+      display: block;
+    }
+    .pagelist__listcont {
+      width: 100%;
+    }
+  }
+}
+.uikitpage {
+  .pagelist__listcont {
+    .pagelist__list-header {
+      font-size: 28px;
+      text-align: center;
+    }
+    .pagelist__list {
+      padding:0;
+    }
+    .pagelist__listelem {
+      list-style-type:none;
+      text-align: center;
+    }
+    .pagelist__link {
+      color: #817fff;
+      font-size: 24px;
+    }
+  }
+}
+

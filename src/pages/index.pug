@@ -1,11 +1,37 @@
 extends ../layouts/ui-kit_layout
 
-block head
-    - var pageTitle = 'Тайтл страницы';
-    - var pageDescription = 'Вот такое вот описание страницы.';
-    - var pageKeywords = 'ключ1, ключ2, ключ3';
+block variables
+    - var pageTitle = 'Page List';
+    - var pageDescription = 'page list description';
+    - var pageKeywords = 'pagelist';
 
 block content
-    p
-        | Эта строка будет выведена в том месте,
-        | где в макете указан block content
+    .pagelist
+        -
+            let uikitpages = [
+                            ['#','Colors & Type'],
+                            ['#','Form elements'],
+                            ['#','Cards'],
+                            ['#','Headers & Footers']
+                     ]
+            let websitepages = [
+                            ['#','Landing page'],
+                            ['#','Registration'],
+                            ['#','Sign in'],
+                            ['#','Search'],
+                            ['#','Room details']
+                     ]
+        h1.pagelist__main-header SELECT PAGE
+        .pagelist__listblock
+            .pagelist__listcont
+                h3.pagelist__list-header UI-kit Pages
+                ul.pagelist__list
+                    each item in uikitpages
+                        li.pagelist__listelem
+                            a.pagelist__link(href=item[0] target="_blank") #{item[1]}
+            .pagelist__listcont
+                h3.pagelist__list-header Website Pages
+                ul.pagelist__list
+                    each item in websitepages
+                        li.pagelist__listelem
+                            a.pagelist__link(href=item[0] target="_blank") #{item[1]}

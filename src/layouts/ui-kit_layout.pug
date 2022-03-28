@@ -1,13 +1,22 @@
+block variables
+    - var pageTitle = 'Тайтл страницы';
+    - var pageDescription = 'Вот такое вот описание страницы.';
+    - var pageKeywords = 'ключ1, ключ2, ключ3';
+
+include ../components/all
+
 doctype html
 html(lang="ru")
     head
-        meta(charset='utf-8')
-        meta(name='viewport', content='initial-scale=1.0, width=device-width')
+        meta(charset="utf-8")
+        meta(name="viewport", content="initial-scale=1.0, width=device-width")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
-        block head
         title= pageTitle || ""
         meta(name="description", content= pageDescription || "")
         meta(name="keywords", content= pageKeywords || "")
-    body
-        div.wrapper
-            block content
+        // Если ещё что-то будет в расширяющих pug, то...
+        block head
+    body.uikitpage
+        +header
+
+        block content
