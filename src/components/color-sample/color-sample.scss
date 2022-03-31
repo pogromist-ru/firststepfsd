@@ -1,0 +1,36 @@
+.color-el {
+  .color-el__square {
+    width:70px;
+    height:70px;
+    border-radius:6px;
+  }
+  .color-el__square_ds100 {
+    background-color: rgba(31, 32, 65, 1);
+  }
+  .color-el__square_ds75 {
+    background-color: rgba(31, 32, 65, 0.75);
+  }
+  .color-el__square_ds50 {
+    background-color: rgba(31, 32, 65, 0.50);
+  }
+  .color-el__square_ds25 {
+    background-color: rgba(31, 32, 65, 0.25);
+  }
+  .color-el__square_ds5 {
+    background-color: rgba(31, 32, 65, 0.05);
+  }
+  .color-el__square_purple {
+    background-color: #BC9CFF;
+  }
+  .color-el__square_green {
+    background-color: #6FCF97;
+  }
+  .color-el__name {
+    margin:0;
+    padding:0;
+  }
+  .color-el__hex {
+    margin:0;
+    padding:0;
+  }
+}

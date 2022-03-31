@@ -6,4 +6,19 @@ block variables
     - var pageKeywords = 'Colors, type';
 
 block content
-    p Тест
+    main.colors-type-page
+        .container
+
+            ul.color-list
+                +color-sample('ds100','Dark Shade 100%','#1F2041')
+                +color-sample('ds75','Dark Shade 75%','#1F2041')
+                +color-sample('ds50','Dark Shade 50%','#1F2041')
+                +color-sample('ds25','Dark Shade 25%','#1F2041')
+                +color-sample('ds5','Dark Shade 5%','#1F2041')
+                +color-sample('purple','Purple','#BC9CFF')
+                +color-sample('green','Green','#6FCF97')
+
+            ul.font-list
+                li.font-el
+                    .color-el__bullet H1
+                    p.color-el__text This one is the sub-section or widget title
